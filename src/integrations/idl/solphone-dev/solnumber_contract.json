@@ -1,0 +1,5017 @@
+{
+  "address": "XiteyKiVLgPtg8TVu5zf6DVV1icWhfcwL2Se8g6vme4",
+  "metadata": {
+    "name": "solnumber_contract",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "add_datapack",
+      "docs": [
+        "Add datapack"
+      ],
+      "discriminator": [
+        221,
+        145,
+        60,
+        131,
+        29,
+        219,
+        155,
+        0
+      ],
+      "accounts": [
+        {
+          "name": "settings",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  97,
+                  116,
+                  97,
+                  112,
+                  97,
+                  99,
+                  107,
+                  95,
+                  115,
+                  101,
+                  116,
+                  116,
+                  105,
+                  110,
+                  103,
+                  115
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "pack",
+          "type": {
+            "defined": {
+              "name": "DataPackPlan"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "add_subscription_plan",
+      "docs": [
+        "Add subscription plan"
+      ],
+      "discriminator": [
+        35,
+        236,
+        167,
+        249,
+        243,
+        208,
+        86,
+        229
+      ],
+      "accounts": [
+        {
+          "name": "settings",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  117,
+                  98,
+                  115,
+                  99,
+                  114,
+                  105,
+                  112,
+                  116,
+                  105,
+                  111,
+                  110,
+                  95,
+                  115,
+                  101,
+                  116,
+                  116,
+                  105,
+                  110,
+                  103,
+                  115
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "plan",
+          "type": {
+            "defined": {
+              "name": "SubscriptionPlan"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "buy_phone_number",
+      "docs": [
+        "Buy a phone number (creates compressed PhoneNumberAccount + NFT)"
+      ],
+      "discriminator": [
+        229,
+        16,
+        135,
+        129,
+        137,
+        77,
+        82,
+        62
+      ],
+      "accounts": [
+        {
+          "name": "settings",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  104,
+                  111,
+                  110,
+                  101,
+                  95,
+                  110,
+                  117,
+                  109,
+                  98,
+                  101,
+                  114,
+                  95,
+                  115,
+                  101,
+                  116,
+                  116,
+                  105,
+                  110,
+                  103,
+                  115
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "central_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  111,
+                  108,
+                  110,
+                  117,
+                  109,
+                  98,
+                  101,
+                  114,
+                  95,
+                  99,
+                  101,
+                  110,
+                  116,
+                  114,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "treasury",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  114,
+                  101,
+                  97,
+                  115,
+                  117,
+                  114,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "buyer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "country_code",
+          "type": "string"
+        },
+        {
+          "name": "number",
+          "type": "string"
+        },
+        {
+          "name": "proof",
+          "type": {
+            "defined": {
+              "name": "ValidityProof"
+            }
+          }
+        },
+        {
+          "name": "address_tree_info",
+          "type": {
+            "defined": {
+              "name": "PackedAddressTreeInfo"
+            }
+          }
+        },
+        {
+          "name": "output_merkle_tree_index",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "cancel_subscription",
+      "docs": [
+        "Cancel subscription auto-renewal (compressed account)"
+      ],
+      "discriminator": [
+        60,
+        139,
+        189,
+        242,
+        191,
+        208,
+        143,
+        18
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "current_phone_account_data",
+          "type": {
+            "defined": {
+              "name": "PhoneAccount"
+            }
+          }
+        },
+        {
+          "name": "account_meta",
+          "type": {
+            "defined": {
+              "name": "CompressedAccountMeta"
+            }
+          }
+        },
+        {
+          "name": "phone_account_address",
+          "type": "pubkey"
+        },
+        {
+          "name": "proof",
+          "type": {
+            "defined": {
+              "name": "ValidityProof"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "consume_call_minutes",
+      "docs": [
+        "Consume call minutes (for service providers to call) - compressed account"
+      ],
+      "discriminator": [
+        58,
+        82,
+        133,
+        206,
+        205,
+        197,
+        136,
+        223
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "minutes",
+          "type": "u32"
+        },
+        {
+          "name": "current_phone_account_data",
+          "type": {
+            "defined": {
+              "name": "PhoneAccount"
+            }
+          }
+        },
+        {
+          "name": "account_meta",
+          "type": {
+            "defined": {
+              "name": "CompressedAccountMeta"
+            }
+          }
+        },
+        {
+          "name": "phone_account_address",
+          "type": "pubkey"
+        },
+        {
+          "name": "proof",
+          "type": {
+            "defined": {
+              "name": "ValidityProof"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "consume_sms",
+      "docs": [
+        "Consume SMS (for service providers to call) - compressed account"
+      ],
+      "discriminator": [
+        152,
+        68,
+        164,
+        114,
+        246,
+        157,
+        98,
+        40
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "count",
+          "type": "u32"
+        },
+        {
+          "name": "current_phone_account_data",
+          "type": {
+            "defined": {
+              "name": "PhoneAccount"
+            }
+          }
+        },
+        {
+          "name": "account_meta",
+          "type": {
+            "defined": {
+              "name": "CompressedAccountMeta"
+            }
+          }
+        },
+        {
+          "name": "phone_account_address",
+          "type": "pubkey"
+        },
+        {
+          "name": "proof",
+          "type": {
+            "defined": {
+              "name": "ValidityProof"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "create_collection",
+      "docs": [
+        "Create SolNumber NFT collection (one-time setup - can be called later)"
+      ],
+      "discriminator": [
+        156,
+        251,
+        92,
+        54,
+        233,
+        2,
+        16,
+        82
+      ],
+      "accounts": [
+        {
+          "name": "central_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  111,
+                  108,
+                  110,
+                  117,
+                  109,
+                  98,
+                  101,
+                  114,
+                  95,
+                  99,
+                  101,
+                  110,
+                  116,
+                  114,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "collection_mint",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "central_state_token_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "central_state"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "collection_mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "create_phone_account",
+      "docs": [
+        "Create a PhoneAccount for the user"
+      ],
+      "discriminator": [
+        88,
+        27,
+        217,
+        219,
+        140,
+        29,
+        125,
+        141
+      ],
+      "accounts": [
+        {
+          "name": "global_subscription_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108,
+                  95,
+                  115,
+                  117,
+                  98,
+                  115,
+                  99,
+                  114,
+                  105,
+                  112,
+                  116,
+                  105,
+                  111,
+                  110,
+                  95,
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "proof",
+          "type": {
+            "defined": {
+              "name": "ValidityProof"
+            }
+          }
+        },
+        {
+          "name": "address_tree_info",
+          "type": {
+            "defined": {
+              "name": "PackedAddressTreeInfo"
+            }
+          }
+        },
+        {
+          "name": "output_merkle_tree_index",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "deactivate_datapack",
+      "docs": [
+        "Deactivate datapack"
+      ],
+      "discriminator": [
+        167,
+        98,
+        141,
+        11,
+        120,
+        69,
+        12,
+        71
+      ],
+      "accounts": [
+        {
+          "name": "settings",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  97,
+                  116,
+                  97,
+                  112,
+                  97,
+                  99,
+                  107,
+                  95,
+                  115,
+                  101,
+                  116,
+                  116,
+                  105,
+                  110,
+                  103,
+                  115
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "pack_id",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "deactivate_subscription_plan",
+      "docs": [
+        "Deactivate subscription plan"
+      ],
+      "discriminator": [
+        197,
+        51,
+        195,
+        87,
+        210,
+        168,
+        23,
+        22
+      ],
+      "accounts": [
+        {
+          "name": "settings",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  117,
+                  98,
+                  115,
+                  99,
+                  114,
+                  105,
+                  112,
+                  116,
+                  105,
+                  111,
+                  110,
+                  95,
+                  115,
+                  101,
+                  116,
+                  116,
+                  105,
+                  110,
+                  103,
+                  115
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "plan_id",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "initialize_central_state",
+      "docs": [
+        "Initialize central state without NFT collection (phase 1 - no NFT features)"
+      ],
+      "discriminator": [
+        204,
+        64,
+        162,
+        125,
+        253,
+        90,
+        119,
+        4
+      ],
+      "accounts": [
+        {
+          "name": "central_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  111,
+                  108,
+                  110,
+                  117,
+                  109,
+                  98,
+                  101,
+                  114,
+                  95,
+                  99,
+                  101,
+                  110,
+                  116,
+                  114,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize_datapack_settings",
+      "docs": [
+        "Initialize datapack settings"
+      ],
+      "discriminator": [
+        76,
+        81,
+        139,
+        163,
+        117,
+        131,
+        199,
+        64
+      ],
+      "accounts": [
+        {
+          "name": "settings",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  97,
+                  116,
+                  97,
+                  112,
+                  97,
+                  99,
+                  107,
+                  95,
+                  115,
+                  101,
+                  116,
+                  116,
+                  105,
+                  110,
+                  103,
+                  115
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize_global_subscription_config",
+      "docs": [
+        "Initialize global subscription configuration (first 10k users get lifetime)"
+      ],
+      "discriminator": [
+        53,
+        148,
+        218,
+        18,
+        177,
+        161,
+        44,
+        99
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108,
+                  95,
+                  115,
+                  117,
+                  98,
+                  115,
+                  99,
+                  114,
+                  105,
+                  112,
+                  116,
+                  105,
+                  111,
+                  110,
+                  95,
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "lifetime_user_threshold",
+          "type": "u64"
+        },
+        {
+          "name": "default_subscription_months",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "initialize_phone_number_settings",
+      "docs": [
+        "Initialize phone number settings (one-time)"
+      ],
+      "discriminator": [
+        249,
+        181,
+        210,
+        1,
+        188,
+        40,
+        195,
+        205
+      ],
+      "accounts": [
+        {
+          "name": "settings",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  104,
+                  111,
+                  110,
+                  101,
+                  95,
+                  110,
+                  117,
+                  109,
+                  98,
+                  101,
+                  114,
+                  95,
+                  115,
+                  101,
+                  116,
+                  116,
+                  105,
+                  110,
+                  103,
+                  115
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "collection_mint",
+          "docs": [
+            "In Phase 3, should be a real Mint account when collection is created"
+          ]
+        },
+        {
+          "name": "service_fee_recipient"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "base_price",
+          "type": "u64"
+        },
+        {
+          "name": "allowed_country_codes",
+          "type": {
+            "vec": "string"
+          }
+        }
+      ]
+    },
+    {
+      "name": "initialize_subscription_settings",
+      "docs": [
+        "Initialize subscription settings with default plans"
+      ],
+      "discriminator": [
+        19,
+        176,
+        153,
+        104,
+        244,
+        203,
+        194,
+        117
+      ],
+      "accounts": [
+        {
+          "name": "settings",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  117,
+                  98,
+                  115,
+                  99,
+                  114,
+                  105,
+                  112,
+                  116,
+                  105,
+                  111,
+                  110,
+                  95,
+                  115,
+                  101,
+                  116,
+                  116,
+                  105,
+                  110,
+                  103,
+                  115
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "default_plan_id",
+          "type": "u8"
+        },
+        {
+          "name": "grace_period_days",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "initialize_treasury",
+      "docs": [
+        "Initialize treasury account (one-time setup)"
+      ],
+      "discriminator": [
+        124,
+        186,
+        211,
+        195,
+        85,
+        165,
+        129,
+        166
+      ],
+      "accounts": [
+        {
+          "name": "treasury",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  114,
+                  101,
+                  97,
+                  115,
+                  117,
+                  114,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "link_phone_number",
+      "docs": [
+        "Link a phone number to user's PhoneAccount"
+      ],
+      "discriminator": [
+        18,
+        154,
+        37,
+        37,
+        125,
+        12,
+        116,
+        144
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "country_code",
+          "type": "string"
+        },
+        {
+          "name": "number",
+          "type": "string"
+        },
+        {
+          "name": "current_phone_number_data",
+          "type": {
+            "defined": {
+              "name": "PhoneNumberAccount"
+            }
+          }
+        },
+        {
+          "name": "phone_number_account_meta",
+          "type": {
+            "defined": {
+              "name": "CompressedAccountMeta"
+            }
+          }
+        },
+        {
+          "name": "phone_number_address",
+          "type": "pubkey"
+        },
+        {
+          "name": "current_phone_account_data",
+          "type": {
+            "defined": {
+              "name": "PhoneAccount"
+            }
+          }
+        },
+        {
+          "name": "phone_account_meta",
+          "type": {
+            "defined": {
+              "name": "CompressedAccountMeta"
+            }
+          }
+        },
+        {
+          "name": "phone_account_address",
+          "type": "pubkey"
+        },
+        {
+          "name": "proof",
+          "type": {
+            "defined": {
+              "name": "ValidityProof"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "purchase_datapack",
+      "docs": [
+        "Purchase a datapack (compressed account)"
+      ],
+      "discriminator": [
+        72,
+        64,
+        47,
+        105,
+        31,
+        223,
+        41,
+        198
+      ],
+      "accounts": [
+        {
+          "name": "datapack_settings",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  97,
+                  116,
+                  97,
+                  112,
+                  97,
+                  99,
+                  107,
+                  95,
+                  115,
+                  101,
+                  116,
+                  116,
+                  105,
+                  110,
+                  103,
+                  115
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "service_fee_recipient",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "pack_id",
+          "type": "u8"
+        },
+        {
+          "name": "current_phone_account_data",
+          "type": {
+            "defined": {
+              "name": "PhoneAccount"
+            }
+          }
+        },
+        {
+          "name": "account_meta",
+          "type": {
+            "defined": {
+              "name": "CompressedAccountMeta"
+            }
+          }
+        },
+        {
+          "name": "phone_account_address",
+          "type": "pubkey"
+        },
+        {
+          "name": "proof",
+          "type": {
+            "defined": {
+              "name": "ValidityProof"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "purchase_subscription",
+      "docs": [
+        "Purchase a subscription plan (compressed account)"
+      ],
+      "discriminator": [
+        219,
+        151,
+        184,
+        220,
+        138,
+        36,
+        203,
+        237
+      ],
+      "accounts": [
+        {
+          "name": "subscription_settings",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  117,
+                  98,
+                  115,
+                  99,
+                  114,
+                  105,
+                  112,
+                  116,
+                  105,
+                  111,
+                  110,
+                  95,
+                  115,
+                  101,
+                  116,
+                  116,
+                  105,
+                  110,
+                  103,
+                  115
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "service_fee_recipient",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "plan_id",
+          "type": "u8"
+        },
+        {
+          "name": "months",
+          "type": "u8"
+        },
+        {
+          "name": "auto_renew",
+          "type": "bool"
+        },
+        {
+          "name": "current_phone_account_data",
+          "type": {
+            "defined": {
+              "name": "PhoneAccount"
+            }
+          }
+        },
+        {
+          "name": "account_meta",
+          "type": {
+            "defined": {
+              "name": "CompressedAccountMeta"
+            }
+          }
+        },
+        {
+          "name": "phone_account_address",
+          "type": "pubkey"
+        },
+        {
+          "name": "proof",
+          "type": {
+            "defined": {
+              "name": "ValidityProof"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "renew_subscription",
+      "docs": [
+        "Renew subscription (compressed account)"
+      ],
+      "discriminator": [
+        45,
+        75,
+        154,
+        194,
+        160,
+        10,
+        111,
+        183
+      ],
+      "accounts": [
+        {
+          "name": "subscription_settings",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  117,
+                  98,
+                  115,
+                  99,
+                  114,
+                  105,
+                  112,
+                  116,
+                  105,
+                  111,
+                  110,
+                  95,
+                  115,
+                  101,
+                  116,
+                  116,
+                  105,
+                  110,
+                  103,
+                  115
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "service_fee_recipient",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "months",
+          "type": "u8"
+        },
+        {
+          "name": "current_phone_account_data",
+          "type": {
+            "defined": {
+              "name": "PhoneAccount"
+            }
+          }
+        },
+        {
+          "name": "account_meta",
+          "type": {
+            "defined": {
+              "name": "CompressedAccountMeta"
+            }
+          }
+        },
+        {
+          "name": "phone_account_address",
+          "type": "pubkey"
+        },
+        {
+          "name": "proof",
+          "type": {
+            "defined": {
+              "name": "ValidityProof"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "send_sms",
+      "docs": [
+        "Send an SMS message (creates compressed SmsMessage and deducts from balance)"
+      ],
+      "discriminator": [
+        48,
+        135,
+        180,
+        118,
+        47,
+        165,
+        30,
+        187
+      ],
+      "accounts": [
+        {
+          "name": "global_config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108,
+                  95,
+                  115,
+                  117,
+                  98,
+                  115,
+                  99,
+                  114,
+                  105,
+                  112,
+                  116,
+                  105,
+                  111,
+                  110,
+                  95,
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "sender",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "to",
+          "type": "pubkey"
+        },
+        {
+          "name": "to_phone_number",
+          "type": "string"
+        },
+        {
+          "name": "from_phone_number",
+          "type": "string"
+        },
+        {
+          "name": "message",
+          "type": "string"
+        },
+        {
+          "name": "iv",
+          "type": "string"
+        },
+        {
+          "name": "salt",
+          "type": "string"
+        },
+        {
+          "name": "message_id",
+          "type": "string"
+        },
+        {
+          "name": "current_phone_account_data",
+          "type": {
+            "defined": {
+              "name": "PhoneAccount"
+            }
+          }
+        },
+        {
+          "name": "phone_account_meta",
+          "type": {
+            "defined": {
+              "name": "CompressedAccountMeta"
+            }
+          }
+        },
+        {
+          "name": "phone_account_address",
+          "type": "pubkey"
+        },
+        {
+          "name": "proof",
+          "type": {
+            "defined": {
+              "name": "ValidityProof"
+            }
+          }
+        },
+        {
+          "name": "sms_output_merkle_tree_index",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "transfer_phone_number",
+      "docs": [
+        "Transfer phone number to new owner (must be unlinked and unwrapped)"
+      ],
+      "discriminator": [
+        207,
+        42,
+        2,
+        43,
+        105,
+        251,
+        165,
+        153
+      ],
+      "accounts": [
+        {
+          "name": "current_owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "country_code",
+          "type": "string"
+        },
+        {
+          "name": "number",
+          "type": "string"
+        },
+        {
+          "name": "new_owner",
+          "type": "pubkey"
+        },
+        {
+          "name": "current_phone_number_data",
+          "type": {
+            "defined": {
+              "name": "PhoneNumberAccount"
+            }
+          }
+        },
+        {
+          "name": "account_meta",
+          "type": {
+            "defined": {
+              "name": "CompressedAccountMeta"
+            }
+          }
+        },
+        {
+          "name": "address",
+          "type": "pubkey"
+        },
+        {
+          "name": "proof",
+          "type": {
+            "defined": {
+              "name": "ValidityProof"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "unlink_phone_number",
+      "docs": [
+        "Unlink phone number from PhoneAccount"
+      ],
+      "discriminator": [
+        92,
+        239,
+        40,
+        27,
+        237,
+        157,
+        164,
+        107
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "country_code",
+          "type": "string"
+        },
+        {
+          "name": "number",
+          "type": "string"
+        },
+        {
+          "name": "current_phone_number_data",
+          "type": {
+            "defined": {
+              "name": "PhoneNumberAccount"
+            }
+          }
+        },
+        {
+          "name": "phone_number_account_meta",
+          "type": {
+            "defined": {
+              "name": "CompressedAccountMeta"
+            }
+          }
+        },
+        {
+          "name": "phone_number_address",
+          "type": "pubkey"
+        },
+        {
+          "name": "current_phone_account_data",
+          "type": {
+            "defined": {
+              "name": "PhoneAccount"
+            }
+          }
+        },
+        {
+          "name": "phone_account_meta",
+          "type": {
+            "defined": {
+              "name": "CompressedAccountMeta"
+            }
+          }
+        },
+        {
+          "name": "phone_account_address",
+          "type": "pubkey"
+        },
+        {
+          "name": "proof",
+          "type": {
+            "defined": {
+              "name": "ValidityProof"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "unwrap_phone_number",
+      "docs": [
+        "Unwrap NFT back to direct ownership"
+      ],
+      "discriminator": [
+        69,
+        76,
+        233,
+        253,
+        224,
+        249,
+        94,
+        92
+      ],
+      "accounts": [
+        {
+          "name": "central_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  111,
+                  108,
+                  110,
+                  117,
+                  109,
+                  98,
+                  101,
+                  114,
+                  95,
+                  99,
+                  101,
+                  110,
+                  116,
+                  114,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "nft_mint"
+        },
+        {
+          "name": "owner_nft_token_account"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "country_code",
+          "type": "string"
+        },
+        {
+          "name": "number",
+          "type": "string"
+        },
+        {
+          "name": "current_phone_number_data",
+          "type": {
+            "defined": {
+              "name": "PhoneNumberAccount"
+            }
+          }
+        },
+        {
+          "name": "account_meta",
+          "type": {
+            "defined": {
+              "name": "CompressedAccountMeta"
+            }
+          }
+        },
+        {
+          "name": "address",
+          "type": "pubkey"
+        },
+        {
+          "name": "proof",
+          "type": {
+            "defined": {
+              "name": "ValidityProof"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "update_collection_mint",
+      "discriminator": [
+        109,
+        6,
+        167,
+        62,
+        117,
+        235,
+        19,
+        11
+      ],
+      "accounts": [
+        {
+          "name": "settings",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  104,
+                  111,
+                  110,
+                  101,
+                  95,
+                  110,
+                  117,
+                  109,
+                  98,
+                  101,
+                  114,
+                  95,
+                  115,
+                  101,
+                  116,
+                  116,
+                  105,
+                  110,
+                  103,
+                  115
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "new_collection_mint",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "update_datapack",
+      "docs": [
+        "Update datapack"
+      ],
+      "discriminator": [
+        253,
+        23,
+        228,
+        250,
+        156,
+        93,
+        228,
+        235
+      ],
+      "accounts": [
+        {
+          "name": "settings",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  97,
+                  116,
+                  97,
+                  112,
+                  97,
+                  99,
+                  107,
+                  95,
+                  115,
+                  101,
+                  116,
+                  116,
+                  105,
+                  110,
+                  103,
+                  115
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "pack_id",
+          "type": "u8"
+        },
+        {
+          "name": "updated_pack",
+          "type": {
+            "defined": {
+              "name": "DataPackPlan"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "update_global_subscription_config",
+      "docs": [
+        "Update global subscription configuration (without redeployment)"
+      ],
+      "discriminator": [
+        61,
+        1,
+        40,
+        45,
+        198,
+        100,
+        99,
+        180
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108,
+                  95,
+                  115,
+                  117,
+                  98,
+                  115,
+                  99,
+                  114,
+                  105,
+                  112,
+                  116,
+                  105,
+                  111,
+                  110,
+                  95,
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "lifetime_user_threshold",
+          "type": {
+            "option": "u64"
+          }
+        },
+        {
+          "name": "default_subscription_months",
+          "type": {
+            "option": "u8"
+          }
+        },
+        {
+          "name": "lifetime_enabled",
+          "type": {
+            "option": "bool"
+          }
+        },
+        {
+          "name": "datapack_restrictions_enabled",
+          "type": {
+            "option": "bool"
+          }
+        }
+      ]
+    },
+    {
+      "name": "update_phone_number_settings",
+      "docs": [
+        "Update phone number settings"
+      ],
+      "discriminator": [
+        76,
+        252,
+        18,
+        75,
+        130,
+        223,
+        21,
+        229
+      ],
+      "accounts": [
+        {
+          "name": "settings",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  104,
+                  111,
+                  110,
+                  101,
+                  95,
+                  110,
+                  117,
+                  109,
+                  98,
+                  101,
+                  114,
+                  95,
+                  115,
+                  101,
+                  116,
+                  116,
+                  105,
+                  110,
+                  103,
+                  115
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "base_price",
+          "type": {
+            "option": "u64"
+          }
+        },
+        {
+          "name": "phone_number_purchase_price",
+          "type": {
+            "option": "u64"
+          }
+        },
+        {
+          "name": "premium_enabled",
+          "type": {
+            "option": "bool"
+          }
+        },
+        {
+          "name": "is_paused",
+          "type": {
+            "option": "bool"
+          }
+        }
+      ]
+    },
+    {
+      "name": "update_subscription_plan",
+      "docs": [
+        "Update subscription plan"
+      ],
+      "discriminator": [
+        27,
+        73,
+        200,
+        227,
+        133,
+        93,
+        78,
+        133
+      ],
+      "accounts": [
+        {
+          "name": "settings",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  117,
+                  98,
+                  115,
+                  99,
+                  114,
+                  105,
+                  112,
+                  116,
+                  105,
+                  111,
+                  110,
+                  95,
+                  115,
+                  101,
+                  116,
+                  116,
+                  105,
+                  110,
+                  103,
+                  115
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "plan_id",
+          "type": "u8"
+        },
+        {
+          "name": "updated_plan",
+          "type": {
+            "defined": {
+              "name": "SubscriptionPlan"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "upgrade_subscription",
+      "docs": [
+        "Upgrade subscription to higher tier (compressed account)"
+      ],
+      "discriminator": [
+        85,
+        239,
+        125,
+        235,
+        199,
+        230,
+        166,
+        246
+      ],
+      "accounts": [
+        {
+          "name": "subscription_settings",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  117,
+                  98,
+                  115,
+                  99,
+                  114,
+                  105,
+                  112,
+                  116,
+                  105,
+                  111,
+                  110,
+                  95,
+                  115,
+                  101,
+                  116,
+                  116,
+                  105,
+                  110,
+                  103,
+                  115
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "service_fee_recipient",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "new_plan_id",
+          "type": "u8"
+        },
+        {
+          "name": "current_phone_account_data",
+          "type": {
+            "defined": {
+              "name": "PhoneAccount"
+            }
+          }
+        },
+        {
+          "name": "account_meta",
+          "type": {
+            "defined": {
+              "name": "CompressedAccountMeta"
+            }
+          }
+        },
+        {
+          "name": "phone_account_address",
+          "type": "pubkey"
+        },
+        {
+          "name": "proof",
+          "type": {
+            "defined": {
+              "name": "ValidityProof"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "wrap_phone_number",
+      "docs": [
+        "Wrap phone number as NFT for trading"
+      ],
+      "discriminator": [
+        56,
+        87,
+        145,
+        156,
+        128,
+        112,
+        82,
+        127
+      ],
+      "accounts": [
+        {
+          "name": "central_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  111,
+                  108,
+                  110,
+                  117,
+                  109,
+                  98,
+                  101,
+                  114,
+                  95,
+                  99,
+                  101,
+                  110,
+                  116,
+                  114,
+                  97,
+                  108
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "nft_mint"
+        },
+        {
+          "name": "owner_nft_token_account"
+        },
+        {
+          "name": "metadata_account",
+          "writable": true
+        },
+        {
+          "name": "metadata_program"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "rent",
+          "address": "SysvarRent111111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "country_code",
+          "type": "string"
+        },
+        {
+          "name": "number",
+          "type": "string"
+        },
+        {
+          "name": "current_phone_number_data",
+          "type": {
+            "defined": {
+              "name": "PhoneNumberAccount"
+            }
+          }
+        },
+        {
+          "name": "account_meta",
+          "type": {
+            "defined": {
+              "name": "CompressedAccountMeta"
+            }
+          }
+        },
+        {
+          "name": "address",
+          "type": "pubkey"
+        },
+        {
+          "name": "proof",
+          "type": {
+            "defined": {
+              "name": "ValidityProof"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "DataPackSettings",
+      "discriminator": [
+        26,
+        0,
+        173,
+        157,
+        25,
+        236,
+        99,
+        73
+      ]
+    },
+    {
+      "name": "GlobalSubscriptionConfig",
+      "discriminator": [
+        39,
+        69,
+        147,
+        230,
+        143,
+        123,
+        104,
+        90
+      ]
+    },
+    {
+      "name": "PhoneNumberSettings",
+      "discriminator": [
+        100,
+        123,
+        9,
+        204,
+        114,
+        177,
+        228,
+        232
+      ]
+    },
+    {
+      "name": "SolNumberCentralState",
+      "discriminator": [
+        254,
+        146,
+        153,
+        36,
+        104,
+        39,
+        17,
+        240
+      ]
+    },
+    {
+      "name": "SubscriptionSettings",
+      "discriminator": [
+        169,
+        144,
+        117,
+        17,
+        30,
+        169,
+        1,
+        99
+      ]
+    },
+    {
+      "name": "Treasury",
+      "discriminator": [
+        238,
+        239,
+        123,
+        238,
+        89,
+        1,
+        168,
+        253
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "AdminActionEvent",
+      "discriminator": [
+        220,
+        224,
+        207,
+        200,
+        52,
+        226,
+        42,
+        155
+      ]
+    },
+    {
+      "name": "CollectionCreatedEvent",
+      "discriminator": [
+        146,
+        244,
+        148,
+        65,
+        159,
+        214,
+        113,
+        185
+      ]
+    },
+    {
+      "name": "CollectionMintUpdatedEvent",
+      "discriminator": [
+        64,
+        131,
+        133,
+        17,
+        182,
+        227,
+        132,
+        129
+      ]
+    },
+    {
+      "name": "DataPackAddedEvent",
+      "discriminator": [
+        129,
+        241,
+        239,
+        24,
+        159,
+        217,
+        185,
+        85
+      ]
+    },
+    {
+      "name": "DataPackDeactivatedEvent",
+      "discriminator": [
+        184,
+        182,
+        240,
+        77,
+        39,
+        158,
+        32,
+        124
+      ]
+    },
+    {
+      "name": "DataPackPurchasedEvent",
+      "discriminator": [
+        8,
+        238,
+        228,
+        207,
+        55,
+        160,
+        68,
+        85
+      ]
+    },
+    {
+      "name": "DataPackSettingsInitializedEvent",
+      "discriminator": [
+        186,
+        187,
+        41,
+        98,
+        209,
+        56,
+        75,
+        136
+      ]
+    },
+    {
+      "name": "DataPackUpdatedEvent",
+      "discriminator": [
+        205,
+        31,
+        103,
+        152,
+        37,
+        160,
+        4,
+        45
+      ]
+    },
+    {
+      "name": "FinancialTransactionEvent",
+      "discriminator": [
+        53,
+        189,
+        58,
+        212,
+        96,
+        94,
+        55,
+        149
+      ]
+    },
+    {
+      "name": "GlobalSubscriptionConfigInitializedEvent",
+      "discriminator": [
+        147,
+        125,
+        12,
+        193,
+        216,
+        28,
+        21,
+        75
+      ]
+    },
+    {
+      "name": "GlobalSubscriptionConfigUpdatedEvent",
+      "discriminator": [
+        5,
+        138,
+        5,
+        212,
+        37,
+        234,
+        116,
+        26
+      ]
+    },
+    {
+      "name": "LifetimeSubscriptionGrantedEvent",
+      "discriminator": [
+        166,
+        64,
+        239,
+        194,
+        188,
+        87,
+        48,
+        158
+      ]
+    },
+    {
+      "name": "PhoneAccountCreatedEvent",
+      "discriminator": [
+        100,
+        20,
+        185,
+        131,
+        33,
+        241,
+        81,
+        129
+      ]
+    },
+    {
+      "name": "PhoneNumberLinkedEvent",
+      "discriminator": [
+        71,
+        219,
+        199,
+        218,
+        151,
+        220,
+        122,
+        2
+      ]
+    },
+    {
+      "name": "PhoneNumberPurchasedEvent",
+      "discriminator": [
+        255,
+        166,
+        218,
+        133,
+        185,
+        184,
+        177,
+        158
+      ]
+    },
+    {
+      "name": "PhoneNumberSettingsInitializedEvent",
+      "discriminator": [
+        238,
+        122,
+        136,
+        134,
+        6,
+        51,
+        232,
+        119
+      ]
+    },
+    {
+      "name": "PhoneNumberSettingsUpdatedEvent",
+      "discriminator": [
+        21,
+        20,
+        125,
+        126,
+        178,
+        127,
+        185,
+        156
+      ]
+    },
+    {
+      "name": "PhoneNumberTransferredEvent",
+      "discriminator": [
+        59,
+        33,
+        178,
+        45,
+        198,
+        81,
+        230,
+        141
+      ]
+    },
+    {
+      "name": "PhoneNumberUnlinkedEvent",
+      "discriminator": [
+        187,
+        196,
+        240,
+        43,
+        162,
+        126,
+        138,
+        105
+      ]
+    },
+    {
+      "name": "PhoneNumberUnwrappedEvent",
+      "discriminator": [
+        117,
+        156,
+        115,
+        117,
+        13,
+        243,
+        106,
+        169
+      ]
+    },
+    {
+      "name": "PhoneNumberWrappedEvent",
+      "discriminator": [
+        159,
+        174,
+        142,
+        125,
+        137,
+        11,
+        17,
+        233
+      ]
+    },
+    {
+      "name": "ServiceUsageEvent",
+      "discriminator": [
+        49,
+        243,
+        9,
+        238,
+        72,
+        134,
+        52,
+        74
+      ]
+    },
+    {
+      "name": "SmsSentEvent",
+      "discriminator": [
+        60,
+        241,
+        177,
+        77,
+        81,
+        143,
+        193,
+        226
+      ]
+    },
+    {
+      "name": "SubscriptionCancelledEvent",
+      "discriminator": [
+        10,
+        87,
+        228,
+        73,
+        76,
+        115,
+        135,
+        170
+      ]
+    },
+    {
+      "name": "SubscriptionPlanAddedEvent",
+      "discriminator": [
+        182,
+        105,
+        243,
+        78,
+        11,
+        31,
+        61,
+        199
+      ]
+    },
+    {
+      "name": "SubscriptionPlanDeactivatedEvent",
+      "discriminator": [
+        93,
+        50,
+        99,
+        64,
+        47,
+        221,
+        236,
+        255
+      ]
+    },
+    {
+      "name": "SubscriptionPlanUpdatedEvent",
+      "discriminator": [
+        76,
+        129,
+        242,
+        145,
+        147,
+        73,
+        186,
+        241
+      ]
+    },
+    {
+      "name": "SubscriptionPurchasedEvent",
+      "discriminator": [
+        141,
+        8,
+        238,
+        239,
+        129,
+        161,
+        23,
+        81
+      ]
+    },
+    {
+      "name": "SubscriptionRenewedEvent",
+      "discriminator": [
+        77,
+        2,
+        48,
+        127,
+        173,
+        252,
+        49,
+        6
+      ]
+    },
+    {
+      "name": "SubscriptionSettingsInitializedEvent",
+      "discriminator": [
+        171,
+        155,
+        150,
+        211,
+        252,
+        63,
+        114,
+        176
+      ]
+    },
+    {
+      "name": "SubscriptionUpgradedEvent",
+      "discriminator": [
+        4,
+        16,
+        6,
+        155,
+        46,
+        138,
+        121,
+        23
+      ]
+    },
+    {
+      "name": "ValidationFailureEvent",
+      "discriminator": [
+        245,
+        169,
+        77,
+        242,
+        178,
+        179,
+        209,
+        150
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "PhoneNumberAlreadyExists",
+      "msg": "Phone number already exists"
+    },
+    {
+      "code": 6001,
+      "name": "PhoneNumberNotFound",
+      "msg": "Phone number not found"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidPhoneNumberFormat",
+      "msg": "Invalid phone number format - must include valid country code and digits"
+    },
+    {
+      "code": 6003,
+      "name": "InvalidPhoneNumberLength",
+      "msg": "Invalid phone number length"
+    },
+    {
+      "code": 6004,
+      "name": "CountryCodeNotAllowed",
+      "msg": "Country code not allowed"
+    },
+    {
+      "code": 6005,
+      "name": "InvalidCountryCode",
+      "msg": "Invalid country code format - must start with + and contain digits"
+    },
+    {
+      "code": 6006,
+      "name": "PhoneNumberAlreadyLinked",
+      "msg": "Phone number already linked to another account"
+    },
+    {
+      "code": 6007,
+      "name": "PhoneNumberNotLinked",
+      "msg": "Phone number not linked"
+    },
+    {
+      "code": 6008,
+      "name": "InsufficientBalance",
+      "msg": "Insufficient balance for operation"
+    },
+    {
+      "code": 6009,
+      "name": "SubscriptionExpired",
+      "msg": "Subscription has expired"
+    },
+    {
+      "code": 6010,
+      "name": "ServicePaused",
+      "msg": "Service is paused by admin"
+    },
+    {
+      "code": 6011,
+      "name": "InvalidSubscriptionPlan",
+      "msg": "Invalid subscription plan ID"
+    },
+    {
+      "code": 6012,
+      "name": "SubscriptionPlanNotActive",
+      "msg": "Subscription plan not active"
+    },
+    {
+      "code": 6013,
+      "name": "InvalidDataPack",
+      "msg": "Invalid data pack plan ID"
+    },
+    {
+      "code": 6014,
+      "name": "DataPackPlanNotActive",
+      "msg": "Data pack plan not active"
+    },
+    {
+      "code": 6015,
+      "name": "NotPhoneNumberOwner",
+      "msg": "Not the phone number owner"
+    },
+    {
+      "code": 6016,
+      "name": "NFTVerificationFailed",
+      "msg": "NFT verification failed - invalid token account or mint"
+    },
+    {
+      "code": 6017,
+      "name": "CannotWrapLinkedNumber",
+      "msg": "Cannot wrap phone number while it is linked to a PhoneAccount"
+    },
+    {
+      "code": 6018,
+      "name": "CannotLinkWrappedNumber",
+      "msg": "Cannot link wrapped phone number - unwrap first"
+    },
+    {
+      "code": 6019,
+      "name": "PhoneNumberAlreadyWrapped",
+      "msg": "Phone number is already wrapped as NFT"
+    },
+    {
+      "code": 6020,
+      "name": "PhoneNumberNotWrapped",
+      "msg": "Phone number is not wrapped"
+    },
+    {
+      "code": 6021,
+      "name": "Unauthorized",
+      "msg": "Unauthorized - not the program authority"
+    },
+    {
+      "code": 6022,
+      "name": "InvalidAuthority",
+      "msg": "Invalid authority"
+    },
+    {
+      "code": 6023,
+      "name": "ArithmeticOverflow",
+      "msg": "Arithmetic overflow"
+    },
+    {
+      "code": 6024,
+      "name": "InvalidPaymentAmount",
+      "msg": "Invalid payment amount"
+    },
+    {
+      "code": 6025,
+      "name": "PhoneAccountNotFound",
+      "msg": "Phone account not found"
+    },
+    {
+      "code": 6026,
+      "name": "PhoneAccountAlreadyExists",
+      "msg": "Phone account already exists"
+    },
+    {
+      "code": 6027,
+      "name": "SettingsNotInitialized",
+      "msg": "Settings not initialized"
+    },
+    {
+      "code": 6028,
+      "name": "SettingsAlreadyInitialized",
+      "msg": "Settings already initialized"
+    },
+    {
+      "code": 6029,
+      "name": "InvalidAccountState",
+      "msg": "Invalid account state"
+    },
+    {
+      "code": 6030,
+      "name": "MaxSubscriptionPlansReached",
+      "msg": "Maximum subscription plans reached"
+    },
+    {
+      "code": 6031,
+      "name": "MaxDataPacksReached",
+      "msg": "Maximum data packs reached"
+    },
+    {
+      "code": 6032,
+      "name": "SubscriptionPlanExists",
+      "msg": "Subscription plan already exists with this ID"
+    },
+    {
+      "code": 6033,
+      "name": "DataPackExists",
+      "msg": "Data pack already exists with this ID"
+    },
+    {
+      "code": 6034,
+      "name": "InvalidPlanName",
+      "msg": "Invalid plan name - must not be empty and max 32 chars"
+    },
+    {
+      "code": 6035,
+      "name": "NoActiveSubscription",
+      "msg": "No active subscription"
+    },
+    {
+      "code": 6036,
+      "name": "InsufficientSmsBalance",
+      "msg": "SMS balance insufficient"
+    },
+    {
+      "code": 6037,
+      "name": "InsufficientCallBalance",
+      "msg": "Call minutes balance insufficient"
+    },
+    {
+      "code": 6038,
+      "name": "DataPackExpired",
+      "msg": "Data pack has expired"
+    },
+    {
+      "code": 6039,
+      "name": "InvalidNftMint",
+      "msg": "Invalid NFT mint"
+    },
+    {
+      "code": 6040,
+      "name": "InvalidNftAmount",
+      "msg": "Invalid NFT amount - must be exactly 1"
+    },
+    {
+      "code": 6041,
+      "name": "InvalidCollectionMint",
+      "msg": "Invalid collection mint"
+    },
+    {
+      "code": 6042,
+      "name": "NFTTokenAccountRequired",
+      "msg": "NFT token account required"
+    },
+    {
+      "code": 6043,
+      "name": "NFTMintMismatch",
+      "msg": "NFT mint mismatch"
+    },
+    {
+      "code": 6044,
+      "name": "NotTokenAccountOwner",
+      "msg": "Not token account owner"
+    },
+    {
+      "code": 6045,
+      "name": "PhoneNumberOwnerMismatch",
+      "msg": "Phone number owner mismatch"
+    },
+    {
+      "code": 6046,
+      "name": "CannotTransferLinkedNumber",
+      "msg": "Cannot transfer linked phone number - unlink first"
+    },
+    {
+      "code": 6047,
+      "name": "InvalidPrice",
+      "msg": "Invalid price - must be greater than zero"
+    },
+    {
+      "code": 6048,
+      "name": "InvalidSmsAmount",
+      "msg": "Invalid SMS amount"
+    },
+    {
+      "code": 6049,
+      "name": "InvalidCallMinutes",
+      "msg": "Invalid call minutes amount"
+    },
+    {
+      "code": 6050,
+      "name": "InvalidValidityPeriod",
+      "msg": "Invalid validity period"
+    },
+    {
+      "code": 6051,
+      "name": "ServiceNotActive",
+      "msg": "Service not active - subscription or datapack required"
+    },
+    {
+      "code": 6052,
+      "name": "InvalidGracePeriod",
+      "msg": "Invalid grace period"
+    },
+    {
+      "code": 6053,
+      "name": "InvalidInstructionData",
+      "msg": "Invalid instruction data"
+    },
+    {
+      "code": 6054,
+      "name": "SecurityViolation",
+      "msg": "Security violation detected"
+    },
+    {
+      "code": 6055,
+      "name": "InvalidAccountOwner",
+      "msg": "Invalid account owner"
+    },
+    {
+      "code": 6056,
+      "name": "MetadataCreationFailed",
+      "msg": "Metadata creation failed"
+    },
+    {
+      "code": 6057,
+      "name": "AccountClosureNotPermitted",
+      "msg": "Account closure not permitted"
+    },
+    {
+      "code": 6058,
+      "name": "CentralStateNotInitialized",
+      "msg": "Central state not initialized"
+    },
+    {
+      "code": 6059,
+      "name": "InvalidCentralState",
+      "msg": "Invalid central state"
+    },
+    {
+      "code": 6060,
+      "name": "InvalidPlanId",
+      "msg": "Invalid plan ID"
+    },
+    {
+      "code": 6061,
+      "name": "CannotModifyPlan",
+      "msg": "Cannot modify immutable plan"
+    },
+    {
+      "code": 6062,
+      "name": "MustUnwrapBeforeTransfer",
+      "msg": "Phone number must be unwrapped before transfer"
+    },
+    {
+      "code": 6063,
+      "name": "InvalidBumpSeed",
+      "msg": "Invalid bump seed"
+    },
+    {
+      "code": 6064,
+      "name": "AccountDeserializationFailed",
+      "msg": "Account deserialization failed"
+    },
+    {
+      "code": 6065,
+      "name": "InvalidTimestamp",
+      "msg": "Invalid timestamp"
+    },
+    {
+      "code": 6066,
+      "name": "RentCalculationFailed",
+      "msg": "Rent calculation failed"
+    },
+    {
+      "code": 6067,
+      "name": "SystemError",
+      "msg": "System error"
+    },
+    {
+      "code": 6068,
+      "name": "CannotDowngrade",
+      "msg": "Cannot downgrade subscription plan"
+    },
+    {
+      "code": 6069,
+      "name": "NoAutoRenewal",
+      "msg": "No auto-renewal is currently enabled"
+    },
+    {
+      "code": 6070,
+      "name": "InvalidRecipient",
+      "msg": "Invalid recipient"
+    },
+    {
+      "code": 6071,
+      "name": "EmptyMessage",
+      "msg": "Message cannot be empty"
+    },
+    {
+      "code": 6072,
+      "name": "InvalidPhoneNumber",
+      "msg": "Invalid phone number"
+    },
+    {
+      "code": 6073,
+      "name": "InvalidMessageId",
+      "msg": "Invalid message ID"
+    }
+  ],
+  "types": [
+    {
+      "name": "AdminActionEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin",
+            "type": "pubkey"
+          },
+          {
+            "name": "action_type",
+            "type": "string"
+          },
+          {
+            "name": "target_account",
+            "type": {
+              "option": "pubkey"
+            }
+          },
+          {
+            "name": "action_data",
+            "type": "string"
+          },
+          {
+            "name": "executed_at",
+            "type": "i64"
+          },
+          {
+            "name": "reason",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CollectionCreatedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "collection_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "central_state",
+            "type": "pubkey"
+          },
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CollectionMintUpdatedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "old_collection_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "new_collection_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "updated_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CompressedAccountMeta",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "tree_info",
+            "docs": [
+              "Merkle tree context."
+            ],
+            "type": {
+              "defined": {
+                "name": "PackedStateTreeInfo"
+              }
+            }
+          },
+          {
+            "name": "address",
+            "docs": [
+              "Address."
+            ],
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "output_state_tree_index",
+            "docs": [
+              "Output merkle tree index."
+            ],
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CompressedProof",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "a",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "b",
+            "type": {
+              "array": [
+                "u8",
+                64
+              ]
+            }
+          },
+          {
+            "name": "c",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "DataPackAddedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "pack_id",
+            "type": "u8"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "price",
+            "type": "u64"
+          },
+          {
+            "name": "sms_included",
+            "type": "u32"
+          },
+          {
+            "name": "call_minutes_included",
+            "type": "u32"
+          },
+          {
+            "name": "validity_days",
+            "type": "u16"
+          },
+          {
+            "name": "added_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DataPackDeactivatedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "pack_id",
+            "type": "u8"
+          },
+          {
+            "name": "deactivated_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DataPackPlan",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "pack_id",
+            "type": "u8"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "price_lamports",
+            "type": "u64"
+          },
+          {
+            "name": "sms_included",
+            "type": "u32"
+          },
+          {
+            "name": "call_minutes_included",
+            "type": "u32"
+          },
+          {
+            "name": "validity_days",
+            "type": "u16"
+          },
+          {
+            "name": "is_active",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DataPackPurchasedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "phone_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "pack_id",
+            "type": "u8"
+          },
+          {
+            "name": "pack_name",
+            "type": "string"
+          },
+          {
+            "name": "price_paid",
+            "type": "u64"
+          },
+          {
+            "name": "sms_added",
+            "type": "u32"
+          },
+          {
+            "name": "call_minutes_added",
+            "type": "u32"
+          },
+          {
+            "name": "valid_until",
+            "type": "i64"
+          },
+          {
+            "name": "purchased_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DataPackSettings",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "packs",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "DataPackPlan"
+                }
+              }
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DataPackSettingsInitializedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "packs_count",
+            "type": "u8"
+          },
+          {
+            "name": "initialized_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DataPackUpdatedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "pack_id",
+            "type": "u8"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "new_price",
+            "type": "u64"
+          },
+          {
+            "name": "updated_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FinancialTransactionEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "transaction_type",
+            "type": "string"
+          },
+          {
+            "name": "from_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "to_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "success",
+            "type": "bool"
+          },
+          {
+            "name": "executed_at",
+            "type": "i64"
+          },
+          {
+            "name": "related_phone_number",
+            "type": {
+              "option": "string"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "GlobalSubscriptionConfig",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "total_users_created",
+            "type": "u64"
+          },
+          {
+            "name": "lifetime_user_threshold",
+            "type": "u64"
+          },
+          {
+            "name": "default_subscription_months",
+            "type": "u8"
+          },
+          {
+            "name": "lifetime_enabled",
+            "type": "bool"
+          },
+          {
+            "name": "datapack_restrictions_enabled",
+            "type": "bool"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "GlobalSubscriptionConfigInitializedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "lifetime_threshold",
+            "type": "u64"
+          },
+          {
+            "name": "default_months",
+            "type": "u8"
+          },
+          {
+            "name": "initialized_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "GlobalSubscriptionConfigUpdatedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "old_lifetime_threshold",
+            "type": "u64"
+          },
+          {
+            "name": "new_lifetime_threshold",
+            "type": "u64"
+          },
+          {
+            "name": "old_default_months",
+            "type": "u8"
+          },
+          {
+            "name": "new_default_months",
+            "type": "u8"
+          },
+          {
+            "name": "old_lifetime_enabled",
+            "type": "bool"
+          },
+          {
+            "name": "new_lifetime_enabled",
+            "type": "bool"
+          },
+          {
+            "name": "total_users_created",
+            "type": "u64"
+          },
+          {
+            "name": "updated_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LifetimeSubscriptionGrantedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "phone_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "user_number",
+            "type": "u64"
+          },
+          {
+            "name": "granted_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PackedAddressTreeInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "address_merkle_tree_pubkey_index",
+            "type": "u8"
+          },
+          {
+            "name": "address_queue_pubkey_index",
+            "type": "u8"
+          },
+          {
+            "name": "root_index",
+            "type": "u16"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PackedStateTreeInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "root_index",
+            "type": "u16"
+          },
+          {
+            "name": "prove_by_index",
+            "type": "bool"
+          },
+          {
+            "name": "merkle_tree_pubkey_index",
+            "type": "u8"
+          },
+          {
+            "name": "queue_pubkey_index",
+            "type": "u8"
+          },
+          {
+            "name": "leaf_index",
+            "type": "u32"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PhoneAccount",
+      "docs": [
+        "PhoneAccount - COMPRESSED ACCOUNT using Light Protocol",
+        "User's private data, subscriptions, datapacks, messages, call history",
+        "",
+        "IMPORTANT: Light Protocol compressed accounts support maximum 12 fields"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "linked_phone_number",
+            "type": {
+              "option": "pubkey"
+            }
+          },
+          {
+            "name": "active_subscription_plan_id",
+            "type": "u8"
+          },
+          {
+            "name": "subscription_start",
+            "type": "i64"
+          },
+          {
+            "name": "subscription_end",
+            "type": "i64"
+          },
+          {
+            "name": "subscription_auto_renew",
+            "type": "bool"
+          },
+          {
+            "name": "active_datapack_plan_id",
+            "type": "u8"
+          },
+          {
+            "name": "datapack_sms_remaining",
+            "type": "u32"
+          },
+          {
+            "name": "datapack_call_minutes_remaining",
+            "type": "u32"
+          },
+          {
+            "name": "datapack_valid_until",
+            "type": "i64"
+          },
+          {
+            "name": "total_sms_sent",
+            "type": "u64"
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PhoneAccountCreatedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "phone_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "linked_phone_number",
+            "type": {
+              "option": "pubkey"
+            }
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "active_subscription_plan_id",
+            "type": "u8"
+          },
+          {
+            "name": "subscription_start",
+            "type": "i64"
+          },
+          {
+            "name": "subscription_end",
+            "type": "i64"
+          },
+          {
+            "name": "subscription_auto_renew",
+            "type": "bool"
+          },
+          {
+            "name": "active_datapack_plan_id",
+            "type": "u8"
+          },
+          {
+            "name": "datapack_sms_remaining",
+            "type": "u32"
+          },
+          {
+            "name": "datapack_call_minutes_remaining",
+            "type": "u32"
+          },
+          {
+            "name": "datapack_valid_until",
+            "type": "i64"
+          },
+          {
+            "name": "total_sms_sent",
+            "type": "u64"
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PhoneNumberAccount",
+      "docs": [
+        "PhoneNumberAccount - COMPRESSED ACCOUNT using Light Protocol",
+        "Represents ownership of a phone number",
+        "Can be wrapped as an NFT for trading on marketplaces"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "country_code",
+            "type": "string"
+          },
+          {
+            "name": "number",
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "phone_account",
+            "type": {
+              "option": "pubkey"
+            }
+          },
+          {
+            "name": "is_wrapped",
+            "type": "bool"
+          },
+          {
+            "name": "nft_mint",
+            "type": {
+              "option": "pubkey"
+            }
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PhoneNumberLinkedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "phone_number",
+            "type": "string"
+          },
+          {
+            "name": "phone_number_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "phone_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "linked_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PhoneNumberPurchasedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "phone_number",
+            "type": "string"
+          },
+          {
+            "name": "country_code",
+            "type": "string"
+          },
+          {
+            "name": "number",
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "phone_number_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "nft_mint",
+            "type": {
+              "option": "pubkey"
+            }
+          },
+          {
+            "name": "price_paid",
+            "type": "u64"
+          },
+          {
+            "name": "purchased_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PhoneNumberSettings",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "base_price_lamports",
+            "type": "u64"
+          },
+          {
+            "name": "phone_number_purchase_price",
+            "type": "u64"
+          },
+          {
+            "name": "premium_number_enabled",
+            "type": "bool"
+          },
+          {
+            "name": "min_phone_number_length",
+            "type": "u8"
+          },
+          {
+            "name": "max_phone_number_length",
+            "type": "u8"
+          },
+          {
+            "name": "allowed_country_codes",
+            "type": {
+              "vec": "string"
+            }
+          },
+          {
+            "name": "nft_collection_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "service_fee_recipient",
+            "type": "pubkey"
+          },
+          {
+            "name": "is_paused",
+            "type": "bool"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PhoneNumberSettingsInitializedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "base_price",
+            "type": "u64"
+          },
+          {
+            "name": "collection_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "initialized_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PhoneNumberSettingsUpdatedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "old_base_price",
+            "type": "u64"
+          },
+          {
+            "name": "new_base_price",
+            "type": "u64"
+          },
+          {
+            "name": "premium_enabled",
+            "type": "bool"
+          },
+          {
+            "name": "is_paused",
+            "type": "bool"
+          },
+          {
+            "name": "updated_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PhoneNumberTransferredEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "phone_number",
+            "type": "string"
+          },
+          {
+            "name": "phone_number_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "old_owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "new_owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "transferred_at",
+            "type": "i64"
+          },
+          {
+            "name": "was_linked",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PhoneNumberUnlinkedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "phone_number",
+            "type": "string"
+          },
+          {
+            "name": "phone_number_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "phone_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "unlinked_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PhoneNumberUnwrappedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "phone_number",
+            "type": "string"
+          },
+          {
+            "name": "phone_number_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "nft_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "unwrapped_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PhoneNumberWrappedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "phone_number",
+            "type": "string"
+          },
+          {
+            "name": "phone_number_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "nft_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "nft_destination",
+            "type": "pubkey"
+          },
+          {
+            "name": "wrapped_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ServiceUsageEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "phone_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "usage_type",
+            "type": "string"
+          },
+          {
+            "name": "amount",
+            "type": "u32"
+          },
+          {
+            "name": "remaining_sms",
+            "type": "u32"
+          },
+          {
+            "name": "remaining_call_minutes",
+            "type": "u32"
+          },
+          {
+            "name": "used_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SmsSentEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "message_id",
+            "type": "string"
+          },
+          {
+            "name": "from",
+            "type": "pubkey"
+          },
+          {
+            "name": "to",
+            "type": "pubkey"
+          },
+          {
+            "name": "phone_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "from_phone_number",
+            "type": "string"
+          },
+          {
+            "name": "to_phone_number",
+            "type": "string"
+          },
+          {
+            "name": "sent_at",
+            "type": "i64"
+          },
+          {
+            "name": "remaining_sms",
+            "type": "u32"
+          },
+          {
+            "name": "total_sms_sent",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SolNumberCentralState",
+      "docs": [
+        "Central State for managing NFT collection and program authority"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "tag",
+            "type": "u8"
+          },
+          {
+            "name": "collection_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "total_phone_numbers",
+            "type": "u64"
+          },
+          {
+            "name": "total_wrapped",
+            "type": "u64"
+          },
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SubscriptionCancelledEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "phone_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "plan_id",
+            "type": "u8"
+          },
+          {
+            "name": "expiration_date",
+            "type": "i64"
+          },
+          {
+            "name": "cancelled_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SubscriptionPlan",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "plan_id",
+            "type": "u8"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "price_per_month_lamports",
+            "type": "u64"
+          },
+          {
+            "name": "included_sms",
+            "type": "u32"
+          },
+          {
+            "name": "included_call_minutes",
+            "type": "u32"
+          },
+          {
+            "name": "additional_sms_price",
+            "type": "u64"
+          },
+          {
+            "name": "additional_call_price",
+            "type": "u64"
+          },
+          {
+            "name": "is_active",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SubscriptionPlanAddedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "plan_id",
+            "type": "u8"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "price_per_month",
+            "type": "u64"
+          },
+          {
+            "name": "sms_included",
+            "type": "u32"
+          },
+          {
+            "name": "call_minutes_included",
+            "type": "u32"
+          },
+          {
+            "name": "added_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SubscriptionPlanDeactivatedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "plan_id",
+            "type": "u8"
+          },
+          {
+            "name": "deactivated_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SubscriptionPlanUpdatedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "plan_id",
+            "type": "u8"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "new_price",
+            "type": "u64"
+          },
+          {
+            "name": "updated_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SubscriptionPurchasedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "phone_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "plan_id",
+            "type": "u8"
+          },
+          {
+            "name": "plan_name",
+            "type": "string"
+          },
+          {
+            "name": "price_paid",
+            "type": "u64"
+          },
+          {
+            "name": "subscription_start",
+            "type": "i64"
+          },
+          {
+            "name": "subscription_end",
+            "type": "i64"
+          },
+          {
+            "name": "sms_included",
+            "type": "u32"
+          },
+          {
+            "name": "call_minutes_included",
+            "type": "u32"
+          },
+          {
+            "name": "purchased_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SubscriptionRenewedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "phone_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "plan_id",
+            "type": "u8"
+          },
+          {
+            "name": "new_expiration",
+            "type": "i64"
+          },
+          {
+            "name": "price_paid",
+            "type": "u64"
+          },
+          {
+            "name": "renewed_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SubscriptionSettings",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "plans",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "SubscriptionPlan"
+                }
+              }
+            }
+          },
+          {
+            "name": "default_plan_id",
+            "type": "u8"
+          },
+          {
+            "name": "grace_period_days",
+            "type": "u8"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SubscriptionSettingsInitializedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "default_plan_id",
+            "type": "u8"
+          },
+          {
+            "name": "grace_period_days",
+            "type": "u8"
+          },
+          {
+            "name": "plans_count",
+            "type": "u8"
+          },
+          {
+            "name": "initialized_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SubscriptionUpgradedEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "phone_account",
+            "type": "pubkey"
+          },
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "old_plan_id",
+            "type": "u8"
+          },
+          {
+            "name": "new_plan_id",
+            "type": "u8"
+          },
+          {
+            "name": "price_paid",
+            "type": "u64"
+          },
+          {
+            "name": "upgraded_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Treasury",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "total_collected",
+            "type": "u64"
+          },
+          {
+            "name": "total_withdrawals",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ValidationFailureEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "account",
+            "type": "pubkey"
+          },
+          {
+            "name": "validation_type",
+            "type": "string"
+          },
+          {
+            "name": "failure_reason",
+            "type": "string"
+          },
+          {
+            "name": "detected_at",
+            "type": "i64"
+          },
+          {
+            "name": "user_involved",
+            "type": {
+              "option": "pubkey"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ValidityProof",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "option": {
+              "defined": {
+                "name": "CompressedProof"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
