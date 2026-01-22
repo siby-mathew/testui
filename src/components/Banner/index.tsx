@@ -237,7 +237,7 @@ const useMutatingNumber = (initial: string, intervalMs = 120) => {
 
   useEffect(() => {
     const id = setInterval(() => {
-      setValue((v) => `${NUMBER_CONFIG.extension}${mutate(v)}`.slice(0, 10));
+      setValue((v) => `${NUMBER_CONFIG.extension}${mutate(v).slice(0, 10)}`);
     }, intervalMs);
 
     return () => clearInterval(id);
